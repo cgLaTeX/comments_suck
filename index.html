@@ -3,6 +3,7 @@
 
 		<link rel="stylesheet" href="revealjs/css/reveal.css">
 		<link rel="stylesheet" href="revealjs/css/theme/blood.css">
+		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
 
 	</head>
 	<body>
@@ -28,18 +29,41 @@
 				</section>
 
 				<section>
-					<pre><code class="python">print("hello world!")</code></pre>
+					<h4>Why do we comment?</h4>
+					<pre><code data-trim class="c++">void PredictorCorrector::Integrator::solve() const
+{
+  for(int step = 0; step < time_idx_ubound; ++step) {
+    solve_step(step);
+
+    # Report simulation progress in 10% increments on stdout
+    if(step % (time_idx_ubound / 10) == 0) {
+      std::cout << "\t" << static_cast&lt;double&gt;(step) / time_idx_ubound
+                << std::endl;
+    }
+
+    # Abort simulation if NaN/+-inf detected
+    if(!all_finite(step)) {
+        const std::string msg = "unbounded history values at or before step ";
+        throw std::domain_error(msg + std::to_string(step));
+    }
+  }
+}</code></pre>
 				</section>
 
 			</div>
 		</div>
-		<script src="revealjs/js/reveal.js"></script>
 
+		<script src="revealjs/lib/js/head.min.js"></script>
+		<script src="revealjs/js/reveal.js"></script>
 		<script>
 			Reveal.initialize({
 				history: true,
 				transition: 'convex',
 				backgroundTransition: 'convex',
+				dependencies: [
+					{ src: 'revealjs/plugin/notes/notes.js', async: true },
+					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
 			});
 		</script>
 
