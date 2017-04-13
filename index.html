@@ -1,0 +1,53 @@
+<html>
+	<head>
+
+		<link rel="stylesheet" href="revealjs/css/reveal.css">
+		<link rel="stylesheet" href="revealjs/css/theme/blood.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>Comments suck.</h1>
+				</section>
+
+				<section>
+					<h3>Comments <em>are evil.</em></h3>
+				</section>
+
+				<section data-background-image="images/lego.jpg"></section>
+
+				<section data-background-image="images/Palpatine.jpg">
+						<span class="fragment fade-in">
+							<h6>
+								Don't let them tempt you to the <span class="fragment highlight-red">dark side</span>.
+							</h6>
+						</span>
+				</section>
+
+				<section>
+					<pre><code class="python">print("hello world!")</code></pre>
+				</section>
+
+			</div>
+		</div>
+		<script src="revealjs/js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				history: true,
+				transition: 'convex',
+				backgroundTransition: 'convex',
+				dependencies: [
+					{ src: 'revealjs/plugin/markdown/marked.js' },
+					{ src: 'revealjs/plugin/markdown/markdown.js' },
+					{ src: 'revealjs/plugin/notes/notes.js', async: true },
+					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
