@@ -12,42 +12,89 @@
 
 				<section>
 					<h1>Comments suck.</h1>
+					<h6>Connor Glosser</h6>
 				</section>
 
 				<section>
-					<h3>Comments <em>are evil.</em></h3>
-				</section>
-
-				<section data-background-image="images/lego.jpg"></section>
-
-				<section data-background-image="images/Palpatine.jpg">
-						<span class="fragment fade-in">
-							<h6>
-								Don't let them tempt you to the <span class="fragment highlight-red">dark side</span>.
-							</h6>
-						</span>
+					<h3>Programming is entirely about managing complexity</h3>
 				</section>
 
 				<section>
-					<h4>Why do we comment?</h4>
-					<pre><code data-trim class="c++">void PredictorCorrector::Integrator::solve() const
-{
-  for(int step = 0; step < time_idx_ubound; ++step) {
-    solve_step(step);
+					<h2>Rule 0</h2>
+					<h4>Have a reason for <i>everything</i> you do.</h4>
+					<aside class="notes">
+						<ul>
+							<li>Variable names</li>
+							<li>Class names</li>
+							<li>Class naming <em>style</em> (CamelCase)</li>
+							<li>Line spacing, commit messages, plot colors, etc.</li>
+						</ul>
+					</aside>
+				</section>
 
-    # Report simulation progress in 10% increments on stdout
-    if(step % (time_idx_ubound / 10) == 0) {
-      std::cout << "\t" << static_cast&lt;double&gt;(step) / time_idx_ubound
-                << std::endl;
-    }
+				<section>
 
-    # Abort simulation if NaN/+-inf detected
-    if(!all_finite(step)) {
-        const std::string msg = "unbounded history values at or before step ";
-        throw std::domain_error(msg + std::to_string(step));
-    }
-  }
-}</code></pre>
+					<section>
+						<h2>Rule 1</h2>
+						<h4>Remove redundancy.</h4>
+					</section>
+
+					<section>
+						<img src="images/ups.svg" height="400" style="background:none; border:none; box-shadow:none;"/>
+						<aside class="notes">
+							UPS is famous for having <a href="http://www.npr.org/sections/money/2014/05/02/308640135/episode-536-the-future-of-work-looks-like-a-ups-truck">optimized <em>everything</em></a>;
+							eliminating left turns, closing the truck door automatically, putting a pencil in your off-hand pocket, etc.
+							It's extreme. Be this extreme in your writing! Don't just DRY (don't repeat yourself) your code, DRY your commit messages and comments, too!
+							A commit message that says "changed file XYZ.cpp" is <em>obvious</em>&mdash;git tells you that already. Instead say "added logging to XYZ.cpp".
+						</aside>
+					</section>
+
+					<section>
+						<blockquote>
+							Change interpolate.cpp
+						</blockquote>
+
+						<blockquote>
+							Add logging to interpolate.cpp
+						</blockquote>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Rule 2</h2>
+						<h4>Comments are <a>evil</a>.</h4>
+					</section>
+
+					<section data-background-image="images/Palpatine.jpg"></section>
+
+<!-- In progress -->
+
+					<section>
+						<pre><code data-trim class="c++">
+							void PredictorCorrector::Integrator::solve() const
+							{
+								for(int step = 0; step < time_idx_ubound; ++step) {
+									solve_step(step);
+
+									# Report simulation progress in 10% increments on stdout
+									if(step % (time_idx_ubound / 10) == 0) {
+										std::cout << "\t" << static_cast&lt;double&gt;(step) / time_idx_ubound
+															<< std::endl;
+									}
+
+									# Abort simulation if NaN/+-inf detected
+									if(!all_finite(step)) {
+											const std::string msg = "unbounded history values at or before step ";
+											throw std::domain_error(msg + std::to_string(step));
+									}
+								}
+							}
+						</code></pre>
+					</section>
+
 				</section>
 
 			</div>
@@ -56,6 +103,7 @@
 		<script src="revealjs/lib/js/head.min.js"></script>
 		<script src="revealjs/js/reveal.js"></script>
 		<script>
+
 			Reveal.initialize({
 				history: true,
 				transition: 'convex',
@@ -65,6 +113,7 @@
 					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
 		</script>
 
 	</body>
